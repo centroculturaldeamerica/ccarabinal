@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Horario Diversificado 2026 — Centro Cultural de América</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estilos/horario.css">
+
+</head>
+<body>
+
+  <!-- ── TOP BAR ── -->
+  <header class="topbar">
+    <div>
+      <div class="topbar-title">
+        Centro Cultural de América — <span>Horario Diversificado 2026</span>
+      </div>
+      <div class="topbar-sub">A partir de Marzo · Sistema de gestión de clases</div>
+    </div>
+    <button class="export-btn" onclick="window.print()">🖨 Imprimir horario</button>
+  </header>
+
+  <div class="layout">
+
+<!-- SIDEBAR -->
+  <aside class="sidebar">
+ 
+    <div class="sidebar-section">
+      <div class="sidebar-label">Nueva clase</div>
+ 
+      <div class="form-group">
+        <label>Nombre del curso</label>
+        <input type="text" id="inp-curso" placeholder="Ej: Matemáticas 4" list="cursos-list">
+        <datalist id="cursos-list">
+          <option value="Lecto Escritura">
+          <option value="Química">
+          <option value="Comunicación y Lenguaje L3 (Inglés Técnico)">
+          <option value="Lengua y Literatura 4">
+          <option value="Lengua y Literatura 5">
+          <option value="Matemáticas 4">
+          <option value="Matemáticas 5">
+          <option value="Física">
+          <option value="Filosofía">
+          <option value="Biología">
+          <option value="Psicología">
+          <option value="Estadística Descriptiva">
+          <option value="Elaboración y Gestión de Proyectos">
+          <option value="Ciencias Sociales y Formación Ciudadana 4">
+          <option value="Ciencias Sociales y Formación Ciudadana 5">
+          <option value="Expresión Artística">
+          <option value="Educación Física">
+          <option value="Tecnologías de la Información y la Comunicación">
+          <option value="Introducción a la Economía">
+          <option value="Inglés Comercial I">
+          <option value="Inglés Comercial II">
+          <option value="Ortografía y Caligrafía">
+          <option value="Administración y Organización de Oficina">
+          <option value="Fundamentos de Derecho">
+          <option value="Contabilidad de Sociedades">
+          <option value="Estadística Comercial">
+          <option value="Matemática Comercial">
+          <option value="Práctica Supervisadas">
+          <option value="Redacción y Correspondencia Mercantil">
+          <option value="Catalogación y Archivo">
+          <option value="Computación I">
+          <option value="Computación II">
+          <option value="Computación III">
+          <option value="Finanzas Públicas">
+          <option value="Geografía Económica">
+          <option value="Cálculo Mercantil y Financiero">
+          <option value="Legislación Fiscal y Aduanal">
+          <option value="Contabilidad de Costos">
+          <option value="Contabilidad Bancaria">
+          <option value="Contabilidad Gubernamental Integrada">
+          <option value="Auditoría">
+          <option value="Organización de Empresas">
+          <option value="Mecanografía">
+          <option value="Ética Profesional y Relaciones Humanas">
+          <option value="Derecho Mercantil y Nociones de Derecho Laboral">
+          <option value="Seminario">
+          <option value="Seminario sobre Problemas Socio Económicas">
+        </datalist>
+      </div>
+
+        <div class="form-group">
+          <label for="inp-dia">Día</label>
+          <div class="select-wrap">
+            <select id="inp-dia">
+              <option value="">— Seleccionar —</option>
+              <option value="L">Lunes</option>
+              <option value="M">Martes</option>
+              <option value="X">Miércoles</option>
+              <option value="J">Jueves</option>
+              <option value="V">Viernes</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inp-inicio">Hora de inicio</label>
+          <div class="select-wrap">
+            <select id="inp-inicio">
+              <option value="">— Seleccionar —</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inp-fin">Hora de fin</label>
+          <div class="select-wrap">
+            <select id="inp-fin">
+              <option value="">— Seleccionar —</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inp-grado">Grado</label>
+          <div class="select-wrap">
+            <select id="inp-grado">
+              <option value="">— Seleccionar —</option>
+              <option value="CUARTO BACH">Cuarto Bachillerato</option>
+              <option value="QUINTO BACH">Quinto Bachillerato</option>
+              <option value="CUARTO PC">Cuarto Perito Contador</option>
+              <option value="QUINTO PC">Quinto Perito Contador</option>
+              <option value="SEXTO PC">Sexto Perito Contador</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Color de la clase</label>
+          <div class="color-row" id="color-row"></div>
+        </div>
+
+        <button class="add-btn" onclick="agregarClase()">
+          <span>＋</span> Agregar al horario
+        </button>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-label">Clases agregadas</div>
+        <div class="clases-lista" id="clases-lista">
+          <div class="empty-state">
+            <div class="icon">📅</div>
+            Aún no hay clases.<br>Agrega tu primera clase arriba.
+          </div>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- ── MAIN ── -->
+    <main class="main">
+      <div class="main-header">
+        <div class="main-title">Horario <span>Semanal</span></div>
+        <div class="day-tabs" id="day-tabs">
+          <button class="day-tab active" data-day="ALL">Todos</button>
+          <button class="day-tab" data-day="L">Lunes</button>
+          <button class="day-tab" data-day="M">Martes</button>
+          <button class="day-tab" data-day="X">Miércoles</button>
+          <button class="day-tab" data-day="J">Jueves</button>
+          <button class="day-tab" data-day="V">Viernes</button>
+        </div>
+      </div>
+
+      <div class="table-wrap" id="table-wrap"></div>
+
+      <div class="stats-bar" id="stats-bar"></div>
+    </main>
+
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <!-- Modal confirmar eliminación -->
+  <div class="modal-bg" id="modal-bg">
+    <div class="modal">
+      <h3>¿Eliminar esta clase?</h3>
+      <p id="modal-desc"></p>
+      <div class="modal-actions">
+        <button class="modal-cancel" onclick="closeModal()">Cancelar</button>
+        <button class="modal-confirm" id="modal-confirm">Sí, eliminar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="functions/horario.js"></script>
+</body>
+</html>

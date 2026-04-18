@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <atom-plugin-web id="ZlVz5ofjlH0MqKHqyboI" company="TElbty6tpMg9a7G4J9eE"></atom-plugin-web>
+<script src="https://atom-plugin-io.web.app/atom-plugin-web.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const plugin = document.getElementById("ZlVz5ofjlH0MqKHqyboI");
+
+    if (!plugin) {
+      console.error("❌ Plugin no encontrado");
+      return;
+    }
+
+    console.log("✅ Plugin encontrado:", plugin);
+
+    // Interceptar TODOS los eventos del plugin
+    const originalDispatch = plugin.dispatchEvent.bind(plugin);
+    plugin.dispatchEvent = function(event) {
+      console.log("📡 Evento detectado:", event.type, event.detail);
+      return originalDispatch(event);
+    };
+
+    // También escuchar desde window por si los eventos suben al DOM
+    window.addEventListener("message", (e) => {
+      console.log("📨 Mensaje en window:", e.data);
+    });
+  });
+</script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patitos club</title>
+</head>
+  
+<body>
+<header>
+  <h1>Mi sitio</h1>
+</header>
+<nav>
+  <a href="#">Inicio</a>
+</nav>
+<main>
+  <section>
+    <article>Contenido aquí</article>
+  </section>
+</main>
+<footer>Derechos reservados</footer>
+</body>
+</html>

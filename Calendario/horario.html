@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
- 
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,86 +10,72 @@
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="../estilos/horario.css">
- 
+  <link rel="icon" href="../Imagenes/imagen_circular_recortada.png" type="image/x-icon">
+
 </head>
- 
+
 <body>
- 
+
   <!-- ── TOP BAR ── -->
   <header class="topbar">
     <div>
       <div class="topbar-title">
         Centro Cultural de América — <span>Horario Diversificado 2026</span>
       </div>
-      <div class="topbar-sub">A partir de Marzo · Sistema de gestión de clases</div>
+      <div class="topbar-sub">Asignación de horario para docentes</div>
     </div>
     <button class="export-btn" onclick="window.print()">🖨 Imprimir horario</button>
   </header>
- 
+
   <div class="layout">
- 
+
     <!-- SIDEBAR -->
     <aside class="sidebar">
- 
+
       <div class="sidebar-section">
         <div class="sidebar-label">Nueva clase</div>
- 
+
+        <!-- 1. Grado -->
         <div class="form-group">
-          <label>Nombre del curso</label>
-          <input type="text" id="inp-curso" placeholder="Ej: Matemáticas 4" list="cursos-list">
-          <datalist id="cursos-list">
-            <option value="Lecto Escritura">
-            <option value="Química">
-            <option value="Comunicación y Lenguaje L3 (Inglés Técnico)">
-            <option value="Lengua y Literatura 4">
-            <option value="Lengua y Literatura 5">
-            <option value="Matemáticas 4">
-            <option value="Matemáticas 5">
-            <option value="Física">
-            <option value="Filosofía">
-            <option value="Biología">
-            <option value="Psicología">
-            <option value="Estadística Descriptiva">
-            <option value="Elaboración y Gestión de Proyectos">
-            <option value="Ciencias Sociales y Formación Ciudadana 4">
-            <option value="Ciencias Sociales y Formación Ciudadana 5">
-            <option value="Expresión Artística">
-            <option value="Educación Física">
-            <option value="Tecnologías de la Información y la Comunicación">
-            <option value="Introducción a la Economía">
-            <option value="Inglés Comercial I">
-            <option value="Inglés Comercial II">
-            <option value="Ortografía y Caligrafía">
-            <option value="Administración y Organización de Oficina">
-            <option value="Fundamentos de Derecho">
-            <option value="Contabilidad de Sociedades">
-            <option value="Estadística Comercial">
-            <option value="Matemática Comercial">
-            <option value="Práctica Supervisadas">
-            <option value="Redacción y Correspondencia Mercantil">
-            <option value="Catalogación y Archivo">
-            <option value="Computación I">
-            <option value="Computación II">
-            <option value="Computación III">
-            <option value="Finanzas Públicas">
-            <option value="Geografía Económica">
-            <option value="Cálculo Mercantil y Financiero">
-            <option value="Legislación Fiscal y Aduanal">
-            <option value="Contabilidad de Costos">
-            <option value="Contabilidad Bancaria">
-            <option value="Contabilidad Gubernamental Integrada">
-            <option value="Auditoría">
-            <option value="Organización de Empresas">
-            <option value="Mecanografía">
-            <option value="Ética Profesional y Relaciones Humanas">
-            <option value="Derecho Mercantil y Nociones de Derecho Laboral">
-            <option value="Seminario">
-            <option value="Seminario sobre Problemas Socio Económicas">
-          </datalist>
+          <label for="inp-grado">1. Grado</label>
+          <div class="select-wrap">
+            <select id="inp-grado">
+              <option value="">— Seleccionar —</option>
+              <option value="PRIMERO BÁSICO">1ro. Básico</option>
+              <option value="SEGUNDO BÁSICO">2do. Básico</option>
+              <option value="TERCERO BÁSICO">3ro. Básico</option>
+              <option value="CUARTO BACH">4to. Bachillerato</option>
+              <option value="QUINTO BACH">5to. Bachillerato</option>
+              <option value="CUARTO PC">4to. Perito Contador</option>
+              <option value="QUINTO PC">5to. Perito Contador</option>
+              <option value="SEXTO PC">6to. Perito Contador</option>
+            </select>
+          </div>
         </div>
- 
+
+        <!-- 2. Docente (se llena según grado) -->
         <div class="form-group">
-          <label for="inp-dia">Día</label>
+          <label for="inp-docente">2. Docente</label>
+          <div class="select-wrap">
+            <select id="inp-docente" disabled>
+              <option value="">— Seleccionar grado primero —</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- 3. Curso (se llena según grado + docente) -->
+        <div class="form-group">
+          <label for="inp-curso">3. Curso</label>
+          <div class="select-wrap">
+            <select id="inp-curso" disabled>
+              <option value="">— Seleccionar docente primero —</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- 4. Día -->
+        <div class="form-group">
+          <label for="inp-dia">4. Día</label>
           <div class="select-wrap">
             <select id="inp-dia">
               <option value="">— Seleccionar —</option>
@@ -101,51 +87,39 @@
             </select>
           </div>
         </div>
- 
+
+        <!-- 5. Hora inicio -->
         <div class="form-group">
-          <label for="inp-inicio">Hora de inicio</label>
+          <label for="inp-inicio">5. Hora de inicio</label>
           <div class="select-wrap">
             <select id="inp-inicio">
               <option value="">— Seleccionar —</option>
             </select>
           </div>
         </div>
- 
+
+        <!-- 6. Hora fin -->
         <div class="form-group">
-          <label for="inp-fin">Hora de fin</label>
+          <label for="inp-fin">6. Hora de fin</label>
           <div class="select-wrap">
             <select id="inp-fin">
               <option value="">— Seleccionar —</option>
             </select>
           </div>
         </div>
- 
-        <div class="form-group">
-          <label for="inp-grado">Grado</label>
-          <div class="select-wrap">
-            <select id="inp-grado">
-              <option value="">— Seleccionar —</option>
-              <option value="CUARTO BACH">Cuarto Bachillerato</option>
-              <option value="QUINTO BACH">Quinto Bachillerato</option>
-              <option value="CUARTO PC">Cuarto Perito Contador</option>
-              <option value="QUINTO PC">Quinto Perito Contador</option>
-              <option value="SEXTO PC">Sexto Perito Contador</option>
-            </select>
-          </div>
-        </div>
- 
+
         <div class="form-group">
           <label>Color de la clase</label>
           <div class="color-row" id="color-row"></div>
         </div>
- 
+
         <button class="add-btn" onclick="agregarClase()">
           <span>＋</span> Agregar al horario
         </button>
       </div>
- 
+
       <div class="divider"></div>
- 
+
       <div class="sidebar-section">
         <div class="sidebar-label">Clases agregadas</div>
         <div class="clases-lista" id="clases-lista">
@@ -155,13 +129,13 @@
           </div>
         </div>
       </div>
- 
+
     </aside>
- 
+
     <!-- ── MAIN ── -->
     <main class="main">
       <div class="main-header">
-        <div class="main-title">Horario <span>Semanal</span></div>
+        <div class="main-title">Horario <span> de cursos</span></div>
         <div class="day-tabs" id="day-tabs">
           <button class="day-tab active" data-day="ALL">Todos</button>
           <button class="day-tab" data-day="L">Lunes</button>
@@ -171,17 +145,17 @@
           <button class="day-tab" data-day="V">Viernes</button>
         </div>
       </div>
- 
+
       <div class="table-wrap" id="table-wrap"></div>
- 
+
       <div class="stats-bar" id="stats-bar"></div>
     </main>
- 
+
   </div>
- 
+
   <!-- Toast -->
   <div class="toast" id="toast"></div>
- 
+
   <!-- Modal confirmar eliminación -->
   <div class="modal-bg" id="modal-bg">
     <div class="modal">
@@ -193,7 +167,8 @@
       </div>
     </div>
   </div>
- 
+
   <script src="../funtions/horario.js"></script>
 </body>
+
 </html>

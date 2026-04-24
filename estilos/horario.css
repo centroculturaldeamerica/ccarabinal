@@ -263,6 +263,22 @@ body  {
   margin-top: 2px;
 }
 
+.clase-docente {
+  font-size: 0.68rem;
+  color: var(--azul-med);
+  margin-top: 2px;
+  font-style: italic;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.form-group select:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  background: var(--border);
+}
+
 .clase-del {
   background: none;
   border: none;
